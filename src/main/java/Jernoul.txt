@@ -1,0 +1,25 @@
+Date: 2 May 2025
+
+AUthor: Mandla Dyonase
+
+Key-takeaways: "What i have learned" the definition of java , java is object oriented , staticlly typed  , platform-independent
+t's widely used in web development, mobile apps (Android), backend systems, and security-critical systems like banking software.
+
+
+Understanding java Basic core syntax
+
+Variables and data types: used in memeory to store data
+
+Conditionals: used to control the work flow of the program
+
+Loops: to iterate on a specific data
+
+Functions :  peaces of codes used dynamically 
+
+Classes and objects : class wich is a blue print to create an instance , we call it an object , each class have a constructore 
+used to instantiate an object when u call that class , 
+
+object -> all the related data encapsulated together in one single unit , having properties that will determine the behaviour of that particular object 
+
+
+
