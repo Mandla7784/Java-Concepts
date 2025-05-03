@@ -84,7 +84,7 @@ public class RegistrationForm extends JFrame implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e)  throws Exception{
+    public void actionPerformed(ActionEvent e)  {
         if (e.getSource() == register) {
             String username = userName.getText();
             String password = new String(passwordField.getPassword());
@@ -95,7 +95,11 @@ public class RegistrationForm extends JFrame implements ActionListener {
             } else {
                 message.setForeground(new Color(0, 128, 0));
                 //call encryption data
-                encryptPassword(password);
+                try {
+                    encryptPassword(password);
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
                 try {
 
                     Thread.sleep(3000);

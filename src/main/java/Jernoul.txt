@@ -35,3 +35,14 @@ java: package sun.jvm.hotspot.runtime is not visible
   (package sun.jvm.hotspot.runtime is declare
 
   im struggling to solve this issue , i tried to find the solution on forums , iwill take a break and try tomorow maybe with some help of AI
+
+
+
+  Key Take aways : i learned how to run docker with "docker build -t my-java-app ."
+  this was amazing as I am willing to learn more abou the containers and how to set up gitlab CI/CD pipelines to run test and deploy
+
+
+
+
+
+
