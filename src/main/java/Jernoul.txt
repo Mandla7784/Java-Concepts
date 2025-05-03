@@ -28,6 +28,10 @@ Classes and objects : class wich is a blue print to create an instance , we call
 used to instantiate an object when u call that class , 
 
 object -> all the related data encapsulated together in one single unit , having properties that will determine the behaviour of that particular object 
+Date: 3 May 2025
 
+what confused me today :
+java: package sun.jvm.hotspot.runtime is not visible
+  (package sun.jvm.hotspot.runtime is declare
 
-
+  im struggling to solve this issue , i tried to find the solution on forums , iwill take a break and try tomorow maybe with some help of AI

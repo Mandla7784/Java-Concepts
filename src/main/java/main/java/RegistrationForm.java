@@ -1,9 +1,16 @@
 package main.java;
 
+import sun.jvm.hotspot.runtime.SignatureIterator;
+
+import javax.crypto.Cipher;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.classfile.Signature;
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
+import java.security.PublicKey;
 
 public class RegistrationForm extends JFrame implements ActionListener {
     JPanel panel;
@@ -89,6 +96,7 @@ public class RegistrationForm extends JFrame implements ActionListener {
                 message.setForeground(new Color(0, 128, 0));
                 //call encryption data
 
+
                 try {
 
                     Thread.sleep(3000);
@@ -96,9 +104,9 @@ public class RegistrationForm extends JFrame implements ActionListener {
                     throw new RuntimeException(ex);
                 }
                 message.setText("User registered successfully!");
-//                System.exit(0);
+               System.exit(0);
 
-                // direct to Log in form..
+                // direct to Log in form
             }
         } else if (e.getSource() == google) {
             message.setForeground(new Color(0, 102, 204));
@@ -106,5 +114,21 @@ public class RegistrationForm extends JFrame implements ActionListener {
         }
     }
 
+    public void encryptPassword(String password) throws Exception {
+        //Creating KeyPair generator object
+        KeyPairGenerator keyPairGen = KeyPairGenerator.getInstance("DSA");
+//Initializing the KeyPairGenerator
+        keyPairGen.initialize(2048);
+//Generate the pair of keys
 
+        KeyPair pair = keyPairGen.generateKeyPair();
+        PublicKey publicKey = ((java.security.KeyPair) pair).getPublic();
+        Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
+        cipher.init(Cipher.ENCRYPT_MODE, publicKey);
+        byte[] enPass = password.getBytes();
+        byte[] cipherTPassword = cipher.doFinal();
+        System.out.println("Encypted Password:" + cipherTPassword);
+
+
+    }
 }

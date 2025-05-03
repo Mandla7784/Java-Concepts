@@ -13,14 +13,12 @@ public class Main{
         // if the file is empty then show Registration form ;
         // else show Login if thre is users already
       File file = new File("Users.json");
-      if(file.exists() || file.length() == 0){
+      if(  file.exists() || file.length() == 0){
           new RegistrationForm();
 
       }else{
           new LoginForm();
 
       }
-
-
     }
 }
