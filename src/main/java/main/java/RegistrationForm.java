@@ -87,7 +87,18 @@ public class RegistrationForm extends JFrame implements ActionListener {
                 message.setText("Please fill in all fields.");
             } else {
                 message.setForeground(new Color(0, 128, 0));
+                //call encryption data
+
+                try {
+
+                    Thread.sleep(3000);
+                } catch (InterruptedException ex) {
+                    throw new RuntimeException(ex);
+                }
                 message.setText("User registered successfully!");
+//                System.exit(0);
+
+                // direct to Log in form..
             }
         } else if (e.getSource() == google) {
             message.setForeground(new Color(0, 102, 204));
