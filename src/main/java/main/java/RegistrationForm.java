@@ -1,13 +1,13 @@
 package main.java;
 
-import sun.jvm.hotspot.runtime.SignatureIterator;
+//import sun.jvm.hotspot.runtime.SignatureIterator;
 
 import javax.crypto.Cipher;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.lang.classfile.Signature;
+//import java.lang.classfile.Signature;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.PublicKey;
@@ -84,7 +84,7 @@ public class RegistrationForm extends JFrame implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent e)  throws Exception{
         if (e.getSource() == register) {
             String username = userName.getText();
             String password = new String(passwordField.getPassword());
@@ -95,8 +95,7 @@ public class RegistrationForm extends JFrame implements ActionListener {
             } else {
                 message.setForeground(new Color(0, 128, 0));
                 //call encryption data
-
-
+                encryptPassword(password);
                 try {
 
                     Thread.sleep(3000);
