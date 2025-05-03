@@ -1,3 +1,11 @@
+📅 Date:
+📘 Topic Studied:
+📌 What I Learned:
+🧠 What Confused Me:
+🔒 Security Takeaway:
+✨ Cool Java Trick:
+
+
 Date: 2 May 2025
 
 AUthor: Mandla Dyonase
