@@ -17,7 +17,7 @@ public class RegistrationForm extends JFrame implements ActionListener {
     JLabel user_label, password_label, message, title;
     JTextField userName;
     JPasswordField passwordField;
-    JButton google, register;
+    JButton google, register ,Login;
 
     public RegistrationForm() {
         setTitle("Register New User");
@@ -78,6 +78,15 @@ public class RegistrationForm extends JFrame implements ActionListener {
         google.setFocusPainted(false);
         google.addActionListener(this);
         panel.add(google);
+        // Login if you already registered
+
+        Login = new JButton("Log in");
+        Login.setBounds(140 , 250 , 180 , 30);
+        Login.setBackground(new Color(219, 68, 55));
+        Login.setForeground(Color.WHITE);
+        Login.setFocusPainted(false);
+        Login.addActionListener(this);
+        panel.add(Login);
 
         add(panel);
         setVisible(true);
@@ -107,22 +116,21 @@ public class RegistrationForm extends JFrame implements ActionListener {
                     throw new RuntimeException(ex);
                 }
                 message.setText("User registered successfully!");
-               System.exit(0);
+                userName.setText(" ");
+                passwordField.setText("");
 
                 // direct to Log in form
             }
         } else if (e.getSource() == google) {
             message.setForeground(new Color(0, 102, 204));
-
         }
     }
-
     public void encryptPassword(String password) throws Exception {
         //Creating KeyPair generator object
         KeyPairGenerator keyPairGen = KeyPairGenerator.getInstance("RSA");
-//Initializing the KeyPairGenerator
+         //Initializing the KeyPairGenerator
         keyPairGen.initialize(2048);
-//Generate the pair of keys
+        //Generate the pair of keys
 
         KeyPair pair = keyPairGen.generateKeyPair();
         PublicKey publicKey = ((java.security.KeyPair) pair).getPublic();
