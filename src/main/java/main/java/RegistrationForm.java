@@ -18,7 +18,7 @@ import java.io.FileWriter;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.PublicKey;
-import java.util.Arrays;
+
 
 public class RegistrationForm extends JFrame implements ActionListener {
     JPanel panel;
@@ -134,7 +134,7 @@ public class RegistrationForm extends JFrame implements ActionListener {
     public void encryptPassword(String password , String name) throws Exception {
         //Creating KeyPair generator object
         KeyPairGenerator keyPairGen = KeyPairGenerator.getInstance("RSA");
-         //Initializing the KeyPairGenerator
+        //Initializing the KeyPairGenerator
         keyPairGen.initialize(2048);
         //Generate the pair of keys
 
@@ -148,18 +148,13 @@ public class RegistrationForm extends JFrame implements ActionListener {
 
        JSONObject jsonObject = new JSONObject();
 
-       jsonObject.put("name" , );
-       jsonObject.put("password");
-
-
-
-        BufferedWriter writer = new BufferedWriter(new FileWriter("Users.json" , true));
+        jsonObject.put("name", name);
+        jsonObject.put("password", cipherTPassword);
+        BufferedWriter writer = new BufferedWriter(new FileWriter("Users.json", true));
 
         // addin the data .....
-        writer.write("{\"password\": \"" + Arrays.toString(cipherTPassword) + "\" \"username :" name" }");
-            writer.newLine();
-         writer.close();
-
-
+        writer.write(jsonObject.toString());
+        writer.newLine();
+        writer.close();
     }
 }
