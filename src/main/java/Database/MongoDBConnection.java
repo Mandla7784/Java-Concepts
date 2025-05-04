@@ -1,4 +1,4 @@
-package main.java;
+package Database;
 
 import com.mongodb.*;
 import com.mongodb.client.MongoClient;
