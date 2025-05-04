@@ -37,13 +37,14 @@
         </plugins>
     </build>
     <dependencies>
-        /** MongoDB dependancies*
+       <!-- MongoDB-->
 
         <dependency>
             <groupId>org.mongodb</groupId>
             <artifactId>mongodb-driver-sync</artifactId>
-            <version>4.11.0</version> <!-- Check for latest version -->
+            <version>4.10.2</version>
         </dependency>
+
 
 
         <!-- https://mvnrepository.com/artifact/org.json/json -->
