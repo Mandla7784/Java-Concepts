@@ -78,16 +78,7 @@ public class RegistrationForm extends JFrame implements ActionListener {
         google.setFocusPainted(false);
         google.addActionListener(this);
         panel.add(google);
-        // Login if you already registered
-
-        Login = new JButton("Log in");
-        Login.setBounds(140 , 250 , 180 , 30);
-        Login.setBackground(new Color(219, 68, 55));
-        Login.setForeground(Color.WHITE);
-        Login.setFocusPainted(false);
-        Login.addActionListener(this);
-        panel.add(Login);
-
+        // Login if you already registered.
         add(panel);
         setVisible(true);
     }
@@ -119,7 +110,15 @@ public class RegistrationForm extends JFrame implements ActionListener {
                 userName.setText(" ");
                 passwordField.setText("");
 
+                JOptionPane.showMessageDialog(this , "Registration successfully ");
+
+                this.dispose();
+
                 // direct to Log in form
+
+                LoginForm loginForm = new LoginForm();
+                loginForm.setVisible(true);
+
             }
         } else if (e.getSource() == google) {
             message.setForeground(new Color(0, 102, 204));
@@ -139,6 +138,7 @@ public class RegistrationForm extends JFrame implements ActionListener {
         byte[] enPass = password.getBytes();
         byte[] cipherTPassword = cipher.doFinal();
         System.out.println("Encypted Password:" + cipherTPassword);
+
 
 
     }

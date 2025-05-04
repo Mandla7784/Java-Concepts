@@ -1,11 +1,16 @@
 package main.java;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.security.*;
 
-public class LoginForm extends JFrame implements ActionListener {
+public class LoginForm extends JFrame implements ActionListener  {
 
     JPanel panel;
     JLabel user_label, password_label, message, title;
@@ -83,6 +88,39 @@ public class LoginForm extends JFrame implements ActionListener {
         String password = new String(passwordField.getPassword());
 
         // Simple validation and data encryption
+        KeyPairGenerator keyPairGen = null;
+        try {
+            keyPairGen = KeyPairGenerator.getInstance("RSA");
+        } catch (NoSuchAlgorithmException ex) {
+            throw new RuntimeException(ex);
+        }
+        //Initializing the KeyPairGenerator
+        keyPairGen.initialize(2048);
+        //Generate the pair of keys
+
+        KeyPair pair = keyPairGen.generateKeyPair();
+        PublicKey publicKey = ((java.security.KeyPair) pair).getPublic();
+        Cipher cipher = null;
+        try {
+            cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
+        } catch (NoSuchAlgorithmException | NoSuchPaddingException ex) {
+            throw new RuntimeException(ex);
+        }
+        try {
+            cipher.init(Cipher.ENCRYPT_MODE, publicKey);
+        } catch (InvalidKeyException ex) {
+            throw new RuntimeException(ex);
+        }
+        byte[] enPass = password.getBytes();
+        try {
+            byte[] cipherTPassword = cipher.doFinal();
+        } catch (IllegalBlockSizeException | BadPaddingException ex) {
+            throw new RuntimeException(ex);
+        }
+
+
+        // check if the encrypted password stored in Database is the same as the Log in one
+
 
     }
 
