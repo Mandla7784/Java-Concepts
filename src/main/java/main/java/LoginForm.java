@@ -117,10 +117,7 @@ public class LoginForm extends JFrame implements ActionListener  {
         } catch (IllegalBlockSizeException | BadPaddingException ex) {
             throw new RuntimeException(ex);
         }
-
-
         // check if the encrypted password stored in Database is the same as the Log in one
-
 
     }
 

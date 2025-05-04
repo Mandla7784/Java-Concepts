@@ -2,15 +2,23 @@ package main.java;
 
 //import sun.jvm.hotspot.runtime.SignatureIterator;
 
+import org.json.JSONObject;
+
+
+
 import javax.crypto.Cipher;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-//import java.lang.classfile.Signature;
+
+import java.io.BufferedWriter;
+
+import java.io.FileWriter;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.PublicKey;
+import java.util.Arrays;
 
 public class RegistrationForm extends JFrame implements ActionListener {
     JPanel panel;
@@ -96,7 +104,7 @@ public class RegistrationForm extends JFrame implements ActionListener {
                 message.setForeground(new Color(0, 128, 0));
                 //call encryption data
                 try {
-                    encryptPassword(password);
+                    encryptPassword(password , username);
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);
                 }
@@ -113,7 +121,6 @@ public class RegistrationForm extends JFrame implements ActionListener {
                 JOptionPane.showMessageDialog(this , "Registration successfully ");
 
                 this.dispose();
-
                 // direct to Log in form
 
                 LoginForm loginForm = new LoginForm();
@@ -124,7 +131,7 @@ public class RegistrationForm extends JFrame implements ActionListener {
             message.setForeground(new Color(0, 102, 204));
         }
     }
-    public void encryptPassword(String password) throws Exception {
+    public void encryptPassword(String password , String name) throws Exception {
         //Creating KeyPair generator object
         KeyPairGenerator keyPairGen = KeyPairGenerator.getInstance("RSA");
          //Initializing the KeyPairGenerator
@@ -139,6 +146,19 @@ public class RegistrationForm extends JFrame implements ActionListener {
         byte[] cipherTPassword = cipher.doFinal();
         System.out.println("Encypted Password:" + cipherTPassword);
 
+       JSONObject jsonObject = new JSONObject();
+
+       jsonObject.put("name" , );
+       jsonObject.put("password");
+
+
+
+        BufferedWriter writer = new BufferedWriter(new FileWriter("Users.json" , true));
+
+        // addin the data .....
+        writer.write("{\"password\": \"" + Arrays.toString(cipherTPassword) + "\" \"username :" name" }");
+            writer.newLine();
+         writer.close();
 
 
     }
