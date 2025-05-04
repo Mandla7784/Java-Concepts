@@ -43,6 +43,22 @@ java: package sun.jvm.hotspot.runtime is not visible
 
 
 
+Date : 4 May 2025
+
+managed to solve the package issue on the 3 May 2025
+
+now im facing a new bug , still trying to figure out whats
+
+$ mongoimport --version
+bash: mongoimport: command not found
+
+apparently there is a way of solving this , basically you will have to configure your System env variables
+and make sure MongoDB is added
+
+
+
+
+
 
 
 

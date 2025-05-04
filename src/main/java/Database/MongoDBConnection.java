@@ -28,6 +28,7 @@ public class MongoDBConnection {
                 // Send a ping to confirm a successful connection
                 Bson command = new BsonDocument("ping", new BsonInt64(1));
                 Document commandResult = database.runCommand(command);
+                System.out.println(database.getName());
                 System.out.println("Pinged your deployment. You successfully connected to MongoDB!");
             } catch (MongoException me) {
                 System.err.println(me);
