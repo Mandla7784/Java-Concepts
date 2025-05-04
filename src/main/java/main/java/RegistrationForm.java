@@ -119,7 +119,7 @@ public class RegistrationForm extends JFrame implements ActionListener {
 
     public void encryptPassword(String password) throws Exception {
         //Creating KeyPair generator object
-        KeyPairGenerator keyPairGen = KeyPairGenerator.getInstance("DSA");
+        KeyPairGenerator keyPairGen = KeyPairGenerator.getInstance("RSA");
 //Initializing the KeyPairGenerator
         keyPairGen.initialize(2048);
 //Generate the pair of keys
