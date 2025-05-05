@@ -55,6 +55,14 @@ bash: mongoimport: command not found
 apparently there is a way of solving this , basically you will have to configure your System env variables
 and make sure MongoDB is added
 
+Date : 5 May 2025
+
+Keytakeaways: I learned about other ways of encrypting data in java , such as messageDigest class
+but I also discovered that using RSA algorithm is an advanced way of achieving the results
+
+
+
+
 
 
 
