@@ -11,7 +11,7 @@ import org.bson.conversions.Bson;
 
 
 public class MongoDBConnection {
-
+      private static  MongoClient mongoClient;
        private static final String uri = "mongodb://localhost:27017/";
         // Construct a ServerApi instance using the ServerApi.builder() method
        static { // initializng mongoClient once
@@ -23,7 +23,7 @@ public class MongoDBConnection {
                     .serverApi(serverApi).build();
 
             // Create a new client and connect to the server
-            MongoClient mongoClient = MongoClients.create(settings);
+           mongoClient = MongoClients.create(settings);
 
             MongoDatabase database = mongoClient.getDatabase("admin");
 
@@ -35,7 +35,10 @@ public class MongoDBConnection {
 
         }
 
+   public  static  MongoDatabase getDatabase(String dbName){
+           return  mongoClient.getDatabase(dbName);
 
+   }
 
 
 

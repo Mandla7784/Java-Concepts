@@ -2,6 +2,9 @@ package main.java;
 
 //import sun.jvm.hotspot.runtime.SignatureIterator;
 
+import Database.MongoDBConnection;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 import org.json.JSONObject;
 
 
@@ -12,6 +15,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import org.bson.Document;
 import java.io.BufferedWriter;
 
 import java.io.FileWriter;
@@ -153,8 +157,17 @@ public class RegistrationForm extends JFrame implements ActionListener {
         BufferedWriter writer = new BufferedWriter(new FileWriter("Users.json", true));
 
         // addin the data .....
-        writer.write(jsonObject.toString());
+        writer.write(jsonObject.toString(4));
         writer.newLine();
         writer.close();
+        // adding the json data /User to the database
+
+        MongoDatabase database = MongoDBConnection.getDatabase("Register");
+        MongoCollection<Document> collection = database.getCollection("myCollection");
+        String newUser =jsonObject.toString(4);
+        Document doc = Document.parse(newUser);
+        collection.insertOne(doc);
+        System.out.println("User successfully  added");
+
     }
 }
