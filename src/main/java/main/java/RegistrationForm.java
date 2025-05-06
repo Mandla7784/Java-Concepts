@@ -170,8 +170,6 @@ public class RegistrationForm extends JFrame implements ActionListener {
         MongoCollection<Document> collection = database.getCollection("myCollection");
         Document doc = Document.parse(jsonObject.toString());
         collection.insertOne(doc);
-
         System.out.println("User successfully added");
-
     }
 }

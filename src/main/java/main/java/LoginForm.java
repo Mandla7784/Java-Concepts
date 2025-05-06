@@ -1,5 +1,10 @@
 package main.java;
 
+import Database.MongoDBConnection;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import org.bson.Document;
+
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
@@ -9,6 +14,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.security.*;
+import java.util.Arrays;
+
+import static com.mongodb.client.model.Filters.eq;
 
 public class LoginForm extends JFrame implements ActionListener  {
 
@@ -86,21 +94,27 @@ public class LoginForm extends JFrame implements ActionListener  {
     }
 
 
-
-
     @Override
     public void actionPerformed(ActionEvent e) {
         String userName = username_text.getText();
         String password = new String(passwordField.getPassword());
-
-
         // check if the encrypted password stored in Database is the same as the Log in one
-        if(encrypted(password) == "password in database" && userName.equals(getName()) ){
-            System.out.println("You are Loged in as " + userName);
 
-        }else{
-            System.out.println("Invalid creds");
-            password_label.setText(" ");
+        MongoCollection<Document> userCollection = MongoDBConnection.getDatabase("register").getCollection("users");
+
+        /** finding the user by username*/
+           Document userDoc = userCollection.find(eq("name" , userName)).first();
+           if(userDoc != null){
+               String encyptedPassword = userDoc.getString("password");
+               String encryptedFromUserLogs = Arrays.toString(encrypted(password));
+               if(encyptedPassword.equals(encryptedFromUserLogs))
+               {
+                   System.out.println("You are Loged in as " + userName);
+               }else{
+                   System.out.println("Invalid creds");
+                   password_label.setText(" ");
+               }
+           }
         }
     }
 
@@ -145,6 +159,5 @@ public class LoginForm extends JFrame implements ActionListener  {
           }
         return  enPass;
     }
-
 
 }
