@@ -18,6 +18,9 @@ public class LoginForm extends JFrame implements ActionListener  {
     JPasswordField passwordField;
     JButton loginButton, cancelButton;
 
+    /**
+     * Initializing UI components
+     */
     public LoginForm() {
         // Setting  up the frame
         setTitle("Login");
@@ -82,6 +85,9 @@ public class LoginForm extends JFrame implements ActionListener  {
         setVisible(true);
     }
 
+
+
+
     @Override
     public void actionPerformed(ActionEvent e) {
         String userName = username_text.getText();
@@ -96,10 +102,15 @@ public class LoginForm extends JFrame implements ActionListener  {
             System.out.println("Invalid creds");
             password_label.setText(" ");
         }
-
     }
 
-
+    /**
+     * Encryptes password using Cipher class , more advanced way to encrypt data in java
+     *
+     * @author Mandla
+     * @param password
+     * @return byte of the encrypted password
+     */
     public  static byte[] encrypted(String password){
 
         // Simple validation and data encryption

@@ -132,7 +132,15 @@ public class RegistrationForm extends JFrame implements ActionListener {
             message.setForeground(new Color(0, 102, 204));
         }
     }
-    public void encryptPassword(String password , String name) throws Exception {
+
+
+    /***
+     * Encryptes password using Cipher class , more advanced way to encrypt data in java
+     * @param password
+     * @param name
+     * @throws Exception
+     */
+    public void encryptPassword(String password, String name) throws Exception {
         //Creating KeyPair generator object
         KeyPairGenerator keyPairGen = KeyPairGenerator.getInstance("RSA");
         //Initializing the KeyPairGenerator
@@ -147,7 +155,7 @@ public class RegistrationForm extends JFrame implements ActionListener {
         byte[] cipherTPassword = cipher.doFinal();
         System.out.println("Encypted Password:" + cipherTPassword);
 
-       JSONObject jsonObject = new JSONObject();
+        JSONObject jsonObject = new JSONObject();
 
         jsonObject.put("name", name);
         jsonObject.put("password", cipherTPassword);
@@ -161,7 +169,7 @@ public class RegistrationForm extends JFrame implements ActionListener {
 
         MongoDatabase database = MongoDBConnection.getDatabase("Register");
         MongoCollection<Document> collection = database.getCollection("myCollection");
-        String newUser =jsonObject.toString(4);
+        String newUser = jsonObject.toString(4);
         Document doc = Document.parse(newUser);
         collection.insertOne(doc);
         System.out.println("User successfully  added");

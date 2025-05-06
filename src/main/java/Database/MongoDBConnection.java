@@ -9,7 +9,6 @@ import org.bson.BsonInt64;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 
-
 public class MongoDBConnection {
       private static  MongoClient mongoClient;
        private static final String uri = "mongodb://localhost:27017/";
