@@ -19,6 +19,7 @@ import java.io.FileWriter;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.PublicKey;
+import java.util.Base64;
 
 
 public class RegistrationForm extends JFrame implements ActionListener {
@@ -141,38 +142,36 @@ public class RegistrationForm extends JFrame implements ActionListener {
      * @throws Exception
      */
     public void encryptPassword(String password, String name) throws Exception {
-        //Creating KeyPair generator object
+        // Generate RSA key pair
         KeyPairGenerator keyPairGen = KeyPairGenerator.getInstance("RSA");
-        //Initializing the KeyPairGenerator
         keyPairGen.initialize(2048);
-        //Generate the pair of keys
-
         KeyPair pair = keyPairGen.generateKeyPair();
-        PublicKey publicKey = ((java.security.KeyPair) pair).getPublic();
+        PublicKey publicKey = pair.getPublic();
+
+        // Encrypt password
         Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
         cipher.init(Cipher.ENCRYPT_MODE, publicKey);
-        byte[] enPass = password.getBytes();
-        byte[] cipherTPassword = cipher.doFinal();
-        System.out.println("Encypted Password:" + cipherTPassword);
+        byte[] encryptedPassword = cipher.doFinal(password.getBytes());
+        String encodedPassword = Base64.getEncoder().encodeToString(encryptedPassword);
 
+        // Create JSON object
         JSONObject jsonObject = new JSONObject();
-
         jsonObject.put("name", name);
-        jsonObject.put("password", cipherTPassword);
-        BufferedWriter writer = new BufferedWriter(new FileWriter("Users.json", true));
+        jsonObject.put("password", encodedPassword);
 
-        // addin the data .....
-        writer.write(jsonObject.toString(4));
-        writer.newLine();
-        writer.close();
+        // Write to file using try-with-resources
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("Users.json", true))) {
+            writer.write(jsonObject.toString(4));
+            writer.newLine();
+        }
+
         // adding the json data /User to the database
-
         MongoDatabase database = MongoDBConnection.getDatabase("Register");
         MongoCollection<Document> collection = database.getCollection("myCollection");
-        String newUser = jsonObject.toString(4);
-        Document doc = Document.parse(newUser);
+        Document doc = Document.parse(jsonObject.toString());
         collection.insertOne(doc);
-        System.out.println("User successfully  added");
+
+        System.out.println("User successfully added");
 
     }
 }
