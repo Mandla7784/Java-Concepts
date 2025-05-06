@@ -87,6 +87,21 @@ public class LoginForm extends JFrame implements ActionListener  {
         String userName = username_text.getText();
         String password = new String(passwordField.getPassword());
 
+
+        // check if the encrypted password stored in Database is the same as the Log in one
+        if(encrypted(password) == "password in database" && userName.equals(getName()) ){
+            System.out.println("You are Loged in as " + userName);
+
+        }else{
+            System.out.println("Invalid creds");
+            password_label.setText(" ");
+        }
+
+    }
+
+
+    public  static byte[] encrypted(String password){
+
         // Simple validation and data encryption
         KeyPairGenerator keyPairGen = null;
         try {
@@ -116,9 +131,9 @@ public class LoginForm extends JFrame implements ActionListener  {
             byte[] cipherTPassword = cipher.doFinal();
         } catch (IllegalBlockSizeException | BadPaddingException ex) {
             throw new RuntimeException(ex);
-        }
-        // check if the encrypted password stored in Database is the same as the Log in one
-
+          }
+        return  enPass;
     }
+
 
 }

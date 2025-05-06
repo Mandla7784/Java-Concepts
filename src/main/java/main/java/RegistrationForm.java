@@ -1,13 +1,10 @@
 package main.java;
 
-//import sun.jvm.hotspot.runtime.SignatureIterator;
 
 import Database.MongoDBConnection;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.json.JSONObject;
-
-
 
 import javax.crypto.Cipher;
 import javax.swing.*;
