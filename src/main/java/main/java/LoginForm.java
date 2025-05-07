@@ -116,7 +116,7 @@ public class LoginForm extends JFrame implements ActionListener  {
                }
            }
         }
-    }
+
 
     /**
      * Encryptes password using Cipher class , more advanced way to encrypt data in java
@@ -156,8 +156,9 @@ public class LoginForm extends JFrame implements ActionListener  {
             byte[] cipherTPassword = cipher.doFinal();
         } catch (IllegalBlockSizeException | BadPaddingException ex) {
             throw new RuntimeException(ex);
-          }
+        }
         return  enPass;
     }
 
 }
+
