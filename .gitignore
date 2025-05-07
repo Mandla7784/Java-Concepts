@@ -1,6 +1,7 @@
 # Compiled class files
 *.class
 
+Users.json
 # Log files
 *.log
 
