@@ -1,0 +1,5 @@
+main\java\RegistrationForm.class
+main\java\LoginForm.class
+Database\MongoDBConnection.class
+main\java\Main.class
+main\java\SendEmail.class

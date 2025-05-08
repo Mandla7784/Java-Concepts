@@ -133,8 +133,6 @@ public class RegistrationForm extends JFrame implements ActionListener {
             message.setForeground(new Color(0, 102, 204));
         }
     }
-
-
     /***
      * Encryptes password using Cipher class , more advanced way to encrypt data in java
      * @param password
