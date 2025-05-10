@@ -33,10 +33,7 @@ Date: 3 May 2025
 what confused me today :
 java: package sun.jvm.hotspot.runtime is not visible
   (package sun.jvm.hotspot.runtime is declare
-
   im struggling to solve this issue , i tried to find the solution on forums , iwill take a break and try tomorow maybe with some help of AI
-
-
 
   Key Take aways : i learned how to run docker with "docker build -t my-java-app ."
   this was amazing as I am willing to learn more abou the containers and how to set up gitlab CI/CD pipelines to run test and deploy
@@ -60,13 +57,9 @@ Date : 5 May 2025
 Keytakeaways: I learned about other ways of encrypting data in java , such as messageDigest class
 but I also discovered that using RSA algorithm is an advanced way of achieving the results
 
-
-
-
-
-
-
-
+Date: 10 May 2025
+Keytakeaways: Today i learned bout Concurrent  hash Maps how they are efficient in terms of handling multi thread
+Its been a greate experience learning these java concepts feel like I am a STAR  java is interesting .
 
 
 

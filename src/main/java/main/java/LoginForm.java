@@ -93,7 +93,6 @@ public class LoginForm extends JFrame implements ActionListener  {
         setVisible(true);
     }
 
-
     @Override
     public void actionPerformed(ActionEvent e) {
         String userName = username_text.getText();
@@ -116,8 +115,6 @@ public class LoginForm extends JFrame implements ActionListener  {
                }
            }
         }
-
-
     /**
      * Encryptes password using Cipher class , more advanced way to encrypt data in java
      *
