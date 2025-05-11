@@ -92,6 +92,7 @@ public class RegistrationForm extends JFrame implements ActionListener {
         add(panel);
         setVisible(true);
     }
+    // this is my comment
 
     @Override
     public void actionPerformed(ActionEvent e)  {
