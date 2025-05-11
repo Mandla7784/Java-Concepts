@@ -2,11 +2,8 @@ package main.java;
 
 
 import java.io.File;
-
-
 import java.util.Scanner;
 import java.util.concurrent.ConcurrentHashMap;
-
 
 public class Main{
     public static void main(String[] args)  {
@@ -16,7 +13,22 @@ public class Main{
         File file = new File("Users.json");
         Scanner scanner = new Scanner(System.in);
         System.out.println("Country");
-        final Runnable task = getRunnable();
+        ConcurrentHashMap<String , String > capitals = new ConcurrentHashMap<>(); // good for handling multi thread
+
+        capitals.put("South Africa", "JHB");
+        capitals.put("USA","New York");
+        capitals.put("India","Mumbai");
+        capitals.put("Turkey","Instanbul");
+        capitals.put("Germany", "Berlin");
+
+        //  Loop through and print all country-capital pairs
+
+
+        Runnable task = ()-> {
+            for (String country : capitals.keySet()) {
+                System.out.println(country + " -> " + capitals.get(country));
+            }
+        };
 
         Thread t1 = new Thread(task);
         Thread t2 = new Thread(task);
@@ -41,25 +53,5 @@ public class Main{
             new LoginForm();
         }
 
-    }
-
-    private static Runnable getRunnable() {
-        ConcurrentHashMap<String , String > capitals = new ConcurrentHashMap<>(); // good for handling multi thread
-
-        capitals.put("South Africa", "JHB");
-        capitals.put("USA","New York");
-        capitals.put("India","Mumbai");
-        capitals.put("Turkey","Instanbul");
-        capitals.put("Germany", "Berlin");
-
-        //  Loop through and print all country-capital pairs
-
-
-        Runnable task = ()-> {
-            for (String country : capitals.keySet()) {
-                System.out.println(country + " -> " + capitals.get(country));
-            }
-        };
-        return task;
     }
 }
