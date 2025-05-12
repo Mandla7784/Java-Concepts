@@ -20,8 +20,9 @@ import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.PublicKey;
 import java.util.Base64;
-
-
+/**
+ * Docs Java
+ */
 public class RegistrationForm extends JFrame implements ActionListener {
     JPanel panel;
     JLabel user_label, password_label, message, title;
