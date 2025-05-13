@@ -38,7 +38,4 @@ public class MongoDBConnection {
            return  mongoClient.getDatabase(dbName);
 
    }
-
-
-
 }
