@@ -9,17 +9,23 @@ import java.util.Random;
  */
 public class Practice {
     public static void main(String[] args) {
-//    duplicates();
-//    missingNumber();
-//    randomNumbers(1,100);
-//    swapingTwoStrings();
-  movingXeros(new int[]{1, 2, 0, 4, 3, 0, 5, 0});
 
+        TaskEvenOdd taskEvenOdd = new TaskEvenOdd(10);
+        Thread oddThread = new Thread(()-> taskEvenOdd.printOdd());
+        Thread evenThread = new Thread(()-> taskEvenOdd.printEven());
+
+        oddThread.start();
+        evenThread.start();
+
+    duplicates();
+    missingNumber();
+    randomNumbers(1,100);
+    swapingTwoStrings();
+    movingXeros(new int[]{1, 2, 0, 4, 3, 0, 5, 0} , 5);
     }
     public static   void duplicates(){
         String string = "Big black bug bit a big black dog on his big black nose";
         string = string.toLowerCase();
-
         String[] words = string.split(" ");
         int count;
 
@@ -36,10 +42,8 @@ public class Practice {
             if (count > 1) {
                 System.out.println(words[i]);
             }
-
         }
     }
-
     public  static  void missingNumber(){
       int numbers []  =new int[]{1,2,3,4,6,7,8};
       int n = 8; // last number
@@ -53,8 +57,6 @@ public class Practice {
           int missing_num = exepected_sum - actual_sum;
         System.out.println(missing_num);
     }
-
-
     public  static  void  randomNumbers(int min_range_num , int max_range){
         Random random = new Random();
         short random_num = 0;
@@ -73,8 +75,8 @@ public class Practice {
         str1 = str1.substring(str2.length());
         System.out.println("Strings after swap: a = " + str1 + " and b = " + str2);
     }
-    public  static void   movingXeros(int arr[]){
-           ArrayList<Integer > cloned_arr = new ArrayList<>();
+    public  static void   movingXeros(int arr[] , int n){
+        ArrayList<Integer > cloned_arr = new ArrayList<>();
         for(int i = 0 ; i  < arr.length ; i ++){
             cloned_arr.add(arr[i]);
         }
@@ -92,6 +94,10 @@ public class Practice {
         System.out.println(temp_arr);
 
 
+
+
     }
+
+
 
 }
