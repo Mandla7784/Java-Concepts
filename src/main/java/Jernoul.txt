@@ -62,4 +62,12 @@ Keytakeaways: Today i learned bout Concurrent  hash Maps how they are efficient 
 Its been a greate experience learning these java concepts feel like I am a STAR  java is interesting .
 
 
+Date: 15 May 2025
+
+Keytakeaways -> Ilearned about lambda expressions in java ,
+i also learned about java swing ui design ,and event handlers
+
+Its been a greate expericence to learn these fundamentals of application development
+
+
 
